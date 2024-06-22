@@ -7,15 +7,13 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.*
+import androidx.compose.material3.Surface
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
-import com.tokai.mobile.coffeeworld.Greeting
-import com.tokai.mobile.coffeeworld.SharedRes
 import com.tokai.mobile.coffeeworld.Strings
 import dev.icerock.moko.resources.StringResource
 
@@ -26,7 +24,7 @@ class MainActivity : ComponentActivity() {
             MyApplicationTheme {
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = Color(0xFFFFFFFF)// MaterialTheme.colorScheme.background
                 ) {
                     Column(
                         modifier = Modifier.fillMaxSize(),
@@ -39,16 +37,19 @@ class MainActivity : ComponentActivity() {
                             ),
                             contentDescription = null
                         )
-                        Text(
+                        /*Text(
                             text = stringResource(
                                 id = SharedRes.strings.hello_world
                             )
                         )
-                        Text(
-                            text = stringResource(
-                                id = SharedRes.strings.hello_x,
-                                "Parita"
-                            )
+                       */
+                        TypewriterText(
+                            texts = listOf(
+                                "Hello Coffee-holics! 💜",
+                                "Let's have a cup of coffee" ,
+                                "And make your soul happy ! 👋 " ,
+                                "\uD83E\uDD0E ☕ \uD83E\uDDCB "
+                            ),
                         )
                     }
                 }
@@ -62,15 +63,3 @@ fun stringResource(id: StringResource, vararg args: Any): String {
     return Strings(LocalContext.current).get(id, args.toList())
 }
 
-@Composable
-fun GreetingView(text: String) {
-    Text(text = text)
-}
-
-@Preview
-@Composable
-fun DefaultPreview() {
-    MyApplicationTheme {
-        GreetingView("Hello, Android!")
-    }
-}
